@@ -36,7 +36,9 @@ public class Detail_activity extends AppCompatActivity {
         genre = findViewById(R.id.genreView);
         description = findViewById(R.id.descirptionView);
 
-        String url = "https://www.omdbapi.com/?apikey=c47dffa7&i=tt2975590";
+        String getExtra = getIntent().getStringExtra("film");
+
+        String url = "https://www.omdbapi.com/?apikey=c47dffa7&i=" + getExtra.toString();
         RequestQueue requestQueue = Volley.newRequestQueue(this);
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null,

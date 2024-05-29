@@ -42,11 +42,6 @@ public class MainActivity extends AppCompatActivity {
          recyclerView.hasFixedSize();
          recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-//        MovieAdapter adapter = new MovieAdapter(arrayList);
-//        recyclerView.setAdapter(adapter);
-//        recyclerView.setLayoutManager(layoutManager);
-
-
         String url = "https://www.omdbapi.com/?apikey=c47dffa7&s=batman";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
 
@@ -65,12 +60,15 @@ public class MainActivity extends AppCompatActivity {
                                 String poster = jsonObject.getString("Poster");
                                 String year = jsonObject.getString("Year");
                                 String type = jsonObject.getString("Type");
+                                String id = jsonObject.getString("imdbID");
+
 
                                 Movies movie = new Movies();
                                 movie.setTitle(title);
                                 movie.setPoster(poster);
                                 movie.setYear(year);
                                 movie.setType(type);
+                                movie.setId(id);
 
                                 movies.add(movie);
                             }

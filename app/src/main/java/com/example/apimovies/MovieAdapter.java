@@ -38,20 +38,25 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.RecycleViewH
         String year = currentMovie.getYear();
         String poster = currentMovie.getPoster();
         String type = currentMovie.getType();
+        String id = currentMovie.getId();
 
         holder.titleView.setText(title);
         holder.yearView.setText(year);
         holder.typeView.setText(type);
+        holder.idView.setText(id);
 
         Picasso.get().load(poster).into(holder.imageView);
 
-        holder.imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), Detail_activity.class);
-                view.getContext().startActivity(intent);
-            }
-        });
+//        holder.imageView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                String idFilm = ;
+//
+//                Intent intent = new Intent(view.getContext(), Detail_activity.class);
+//                intent.putExtra("idFilm", idFilm);
+//                view.getContext().startActivity(intent);
+//            }
+//        });
     }
     @Override
     public int getItemCount() {
@@ -62,12 +67,25 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.RecycleViewH
         public TextView titleView;
         public TextView yearView;
         public TextView typeView;
+        public TextView idView;
         public RecycleViewHolder(@NonNull View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.poster);
             titleView = itemView.findViewById(R.id.titleS);
             yearView = itemView.findViewById(R.id.year);
             typeView = itemView.findViewById(R.id.type);
+            idView = itemView.findViewById(R.id.idView);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String idFilm = idView.getText().toString();
+
+                    Intent intent = new Intent(context, Detail_activity.class);
+                    intent.putExtra("film", idFilm);
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 }

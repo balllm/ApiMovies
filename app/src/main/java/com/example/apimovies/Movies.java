@@ -5,6 +5,7 @@ public class Movies {
     private String year;
     private String type;
     private String poster;
+    private String id;
 
     public Movies(String title, String year, String type, String poster) {
         this.title = title;
@@ -14,6 +15,14 @@ public class Movies {
     }
 
     public Movies() {
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getTitle() {
